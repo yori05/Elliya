@@ -12,4 +12,5 @@ AElliyaGameMode::AElliyaGameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
+
 }

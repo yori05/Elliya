@@ -57,7 +57,7 @@ protected:
 
 public :
 
-	void SetClimbingBox(UBoxComponent* _box);
+	//void SetClimbingBox(UBoxComponent* _box);
 	UBoxComponent* GetClimbingBox() const {return ClimbBoxCheck;};
 
 	virtual void OnMovementModeChanged(EMovementMode PreviousMovementMode, uint8 PreviousCustomMode) override;

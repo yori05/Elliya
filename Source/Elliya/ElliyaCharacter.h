@@ -49,6 +49,10 @@ protected:
 	 */
 	void LookUpAtRate(float Rate);
 
+	/** Called for crouch */
+	void Crouch();
+
+	void Jump() override;
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

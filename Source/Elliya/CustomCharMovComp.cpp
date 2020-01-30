@@ -113,9 +113,9 @@ void UCustomCharMovComp::OnMovementModeChanged(EMovementMode PreviousMovementMod
 		//bOrientRotationToMovement = true;
 	}
 
-	/*
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("MovementMode : %d Previous : %d"), (uint8)MovementMode, (uint8)prevMov));
-	*/
+	
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("MovementMode : %d Previous : %d"), (uint8)MovementMode, (uint8)prevMov));
+	
 }
 
 void UCustomCharMovComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)

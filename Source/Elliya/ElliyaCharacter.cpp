@@ -58,7 +58,7 @@ AElliyaCharacter::AElliyaCharacter(const FObjectInitializer& ObjectInitializer) 
 
 	if (CustomCharMovComp != nullptr)
 	{
-		CustomCharMovComp->SetClimbingBox(ClimbBoxCheck);
+		//CustomCharMovComp->SetClimbingBox(ClimbBoxCheck);
 	}
 }
 
@@ -69,8 +69,9 @@ void AElliyaCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 {
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
-	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AElliyaCharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this, &AElliyaCharacter::Crouch);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AElliyaCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AElliyaCharacter::MoveRight);
@@ -86,6 +87,7 @@ void AElliyaCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	PlayerInputComponent->BindAction("Climb", IE_Pressed, this, &AElliyaCharacter::Climb);
 }
 
+
 void AElliyaCharacter::Climb()
 {
 	//auto transform = GetTransform();
@@ -93,6 +95,30 @@ void AElliyaCharacter::Climb()
 	{
 		CustomCharMovComp->Climb();
 	}
+}
+
+void AElliyaCharacter::Crouch()
+{
+	if (Super::CanCrouch())
+	{
+		Super::Crouch();
+	}
+	else if (Super::bIsCrouched)
+	{
+		Super::UnCrouch();
+	}
+
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Can crouch : %d Want to crouch : %d Is crouched : %d "), CustomCharMovComp->CanCrouchInCurrentState(), CustomCharMovComp->bWantsToCrouch, CustomCharMovComp->CanEverCrouch()));
+}
+
+void AElliyaCharacter::Jump()
+{
+	if (Super::bIsCrouched)
+	{
+		Super::UnCrouch();
+	}
+
+	Super::Jump();
 }
 
 void AElliyaCharacter::TurnAtRate(float Rate)
