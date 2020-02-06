@@ -22,7 +22,7 @@ enum EMovementModeCustom
 };
 
 UENUM(BlueprintType)
-enum EDodgeMode
+enum EDodgeModeCustom
 {
 	/** None (dodge is disabled).*/
 	DODGE_None UMETA(DisplayName = "None"),
