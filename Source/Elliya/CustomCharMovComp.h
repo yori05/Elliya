@@ -7,7 +7,7 @@
 #include "CustomCharMovComp.generated.h"
 
 UENUM(BlueprintType)
-enum EMovementModeCustom : uint8
+enum EMovementModeCustom
 {
 	/** None (mouvement is disabled).*/
 	CUSTOM_None UMETA(DisplayName = "None"),
@@ -22,7 +22,7 @@ enum EMovementModeCustom : uint8
 };
 
 UENUM(BlueprintType)
-enum EDodgeModeCustom : uint8
+enum EDodgeModeCustom
 {
 	/** None (dodge is disabled).*/
 	DODGE_None UMETA(DisplayName = "None"),
