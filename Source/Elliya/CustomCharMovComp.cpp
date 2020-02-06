@@ -239,3 +239,8 @@ uint8 UCustomCharMovComp::GetCustomMode() const
 {
 	return CustomMovementMode;
 }
+
+void UCustomCharMovComp::Dodge(uint8 _DirectionDodge) // = DODGE_DIRECTION_None)
+{
+
+}

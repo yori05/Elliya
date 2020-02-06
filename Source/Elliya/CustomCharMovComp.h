@@ -22,7 +22,7 @@ enum EMovementModeCustom
 };
 
 UENUM(BlueprintType)
-enum EDodgeMode
+enum EDodgeState
 {
 	/** None (dodge is disabled).*/
 	DODGE_None UMETA(DisplayName = "None"),
@@ -35,10 +35,22 @@ enum EDodgeMode
 
 	/** End of the dodge. */
 	DODGE_End UMETA(DisplayName = "End"),
-	
+
 	DODGE_Max UMETA(Hidden),
 };
 
+UENUM(BlueprintType)
+enum EDodgeDirection
+{
+	DODGE_DIRECTION_None UMETA(DisplayName = "None"),
+	DODGE_DIRECTION_Forward UMETA(DisplayName = "Forward"),
+	DODGE_DIRECTION_Backward UMETA(DisplayName = "Backward"),
+	DODGE_DIRECTION_Left UMETA(DisplayName = "Left"),
+	DODGE_DIRECTION_Right UMETA(DisplayName = "Right"),
+	DODGE_DIRECTION_Up UMETA(DisplayName = "Up"),
+	DODGE_DIRECTION_Down UMETA(DisplayName = "Down"),
+	DODGE_DIRECTION_Max UMETA(Hidden),
+};
  //=============================================================================
  /**
   * CustomCharacterMovementComponent (CustomCharMovComp) handles movement logic for the associated Character owner.
@@ -76,6 +88,15 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 		UBoxComponent* ClimbBoxCheck;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Dodge")
+		bool bIsDodging = false;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Dodge")
+		uint8 dodgeDirection;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Dodge")
+		uint8 dodgeState;
+
 public :
 
 	//void SetClimbingBox(UBoxComponent* _box);
@@ -109,4 +130,7 @@ public :
 
 	UFUNCTION(BlueprintCallable, Category = "Pawn|Components|CharacterMovement|Custom")
 	uint8 GetCustomMode() const;
+
+	UFUNCTION(BlueprintCallable)
+		virtual void Dodge(uint8 _DirectionDodge = 0);
 };
