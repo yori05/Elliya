@@ -29,6 +29,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
 
+	virtual void BeginPlay() override;
 protected:
 
 	/** Called for forwards/backward input */
@@ -53,6 +54,8 @@ protected:
 	void Crouch();
 
 	void Jump() override;
+
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -63,6 +66,9 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	class UBoxComponent* ClimbBoxCheck;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		class UBoxComponent* tentativeCheck;
 
 public:
 	/** Returns CameraBoom subobject **/

@@ -62,6 +62,12 @@ AElliyaCharacter::AElliyaCharacter(const FObjectInitializer& ObjectInitializer) 
 	}
 }
 
+
+void AElliyaCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 

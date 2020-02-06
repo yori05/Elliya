@@ -7,7 +7,7 @@
 #include "CustomCharMovComp.generated.h"
 
 UENUM(BlueprintType)
-enum EMovementModeCustom : uint8
+enum EMovementModeCustom
 {
 	/** None (mouvement is disabled).*/
 	CUSTOM_None UMETA(DisplayName = "None"),
@@ -15,28 +15,7 @@ enum EMovementModeCustom : uint8
 	/** Climbing on a surface. */
 	CUSTOM_Climbing UMETA(DisplayName = "Climbing"),
 
-	/** Climbing on a surface. */
-	CUSTOM_Dodge UMETA(DisplayName = "Dodge"),
-
 	CUSTOM_MAX UMETA(Hidden),
-};
-
-UENUM(BlueprintType)
-enum EDodgeModeCustom : uint8
-{
-	/** None (dodge is disabled).*/
-	DODGE_None UMETA(DisplayName = "None"),
-
-	/** Initialization of the dodge. */
-	DODGE_Init UMETA(DisplayName = "Initialize"),
-
-	/** Update of the dodge. */
-	DODGE_Update UMETA(DisplayName = "Update"),
-
-	/** End of the dodge. */
-	DODGE_End UMETA(DisplayName = "End"),
-	
-	DODGE_Max UMETA(Hidden),
 };
 
  //=============================================================================
