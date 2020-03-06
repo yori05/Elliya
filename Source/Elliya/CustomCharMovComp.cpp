@@ -183,6 +183,8 @@ bool UCustomCharMovComp::DetectForward(FHitResult& resultHit, float deepth, floa
 	if (nullptr != CharacterOwner)
 	{
 		FCollisionQueryParams queryParams;
+		
+		queryParams.AddIgnoredActor(CharacterOwner);
 
 		const FVector _StartLocation = CharacterOwner->GetActorLocation();
 		const FVector EndRayCast = _StartLocation + (CharacterOwner->GetActorForwardVector() * (CharacterOwner->GetCapsuleComponent()->GetScaledCapsuleRadius() + deepth) * side);
@@ -205,6 +207,8 @@ bool UCustomCharMovComp::DetectRight(FHitResult& resultHit, float deepth, float 
 	if (nullptr != CharacterOwner)
 	{
 		FCollisionQueryParams queryParams;
+
+		queryParams.AddIgnoredActor(CharacterOwner);
 
 		const FVector _StartLocation = CharacterOwner->GetActorLocation();
 		const FVector EndRayCast = _StartLocation + (CharacterOwner->GetActorRightVector() * (CharacterOwner->GetCapsuleComponent()->GetScaledCapsuleRadius() + deepth) * side);
